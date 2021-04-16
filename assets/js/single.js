@@ -1,6 +1,13 @@
+const repoNameEl = document.querySelector("#repo-name");
 const issueContainerEl = document.querySelector("#issues-container");
-
 const limitWarningEl = document.querySelector("#limit-warning");
+
+const getRepoName = function () {
+    const queryString = document.location.search;
+    const repoName = queryString.split("repo=")[1];
+    getRepoIssues(repoName);
+    repoNameEl.textContent = repoName;
+};
 
 const getRepoIssues = function (repo) {
     const apiUrl = "https://api.github.com/repos/" + repo + "/issues?direction=asc";
@@ -73,6 +80,4 @@ const displayWarning = function (repo) {
     limitWarningEl.appendChild(linkEl);
 };
 
-getRepoIssues("mswil/git-it-done");
-getRepoIssues("facebook/react");
-
+getRepoName();
