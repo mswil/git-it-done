@@ -35,6 +35,7 @@ const getRepoIssues = function (repo) {
                     displayWarning(repo);
                 }
             });
+            return;
         }
         // if not successful, redirect to homepage
         document.location.replace("./index.html");
